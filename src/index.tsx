@@ -8,6 +8,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <div />
+    <h1 className="text-3xl font-bold text-center text-red-500">
+      Innoloft task
+    </h1>
   </React.StrictMode>,
 );

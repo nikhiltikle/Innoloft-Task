@@ -3,7 +3,10 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      colors: { 'chinese-blue': '#272E71' },
+      colors: {
+        'chinese-blue': '#272E71',
+        charcoal: '#374151',
+      },
     },
   },
   plugins: [],

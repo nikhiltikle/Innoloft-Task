@@ -1,4 +1,5 @@
 import NavbarWrapper from 'components/NavbarWrapper';
+import ProductView from 'components/ProductView';
 import { createBrowserRouter } from 'react-router-dom';
 
 export const router = createBrowserRouter([
@@ -12,7 +13,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/product',
-        element: <div>View Product page</div>,
+        element: <ProductView />,
       },
       {
         path: '/product/edit',

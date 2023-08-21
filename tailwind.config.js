@@ -6,6 +6,8 @@ module.exports = {
       colors: {
         'chinese-blue': '#272E71',
         charcoal: '#374151',
+        'ghost-white': '#FBFAF9',
+        'bright-gray': '#E5E7EB',
       },
     },
   },

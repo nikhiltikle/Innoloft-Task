@@ -5,8 +5,10 @@ export default function NavbarWrapper() {
   return (
     <>
       <Header />
-      <div className="container mx-auto mt-5">
-        <Outlet />
+      <div className="bg-ghost-white min-h-[calc(100svh-56px)]">
+        <div className="container mx-auto pt-5">
+          <Outlet />
+        </div>
       </div>
     </>
   );

@@ -7,7 +7,7 @@ export default function Header() {
       <div className="container mx-auto h-full">
         <div className="flex h-full items-center justify-between">
           <Link to="/">
-            <img src={InnoloftLogo} alt="Innoloft" height={'26px'} width={'140px'} className="pointer" />
+            <img src={InnoloftLogo} alt="Innoloft" height={'26px'} width={'140px'} />
           </Link>
 
           <div className="flex gap-4 items-center">

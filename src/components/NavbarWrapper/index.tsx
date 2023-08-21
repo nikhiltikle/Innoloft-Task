@@ -6,7 +6,7 @@ export default function NavbarWrapper() {
     <>
       <Header />
       <div className="bg-ghost-white min-h-[calc(100svh-56px)]">
-        <div className="container mx-auto pt-5">
+        <div className="container mx-auto py-5">
           <Outlet />
         </div>
       </div>

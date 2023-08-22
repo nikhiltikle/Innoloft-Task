@@ -1,3 +1,5 @@
+import Breadcrumb from 'components/Breadcrumb';
+import Button from 'components/Button';
 import OfferDetails from 'components/OfferDetails';
 import ProductMainSection from 'components/ProductMainSection';
 import ShowVideo from 'components/ShowVideo';
@@ -9,6 +11,11 @@ export default function ProductView() {
       <UserNavbar />
 
       <div className="flex flex-col gap-5 grow">
+        <div className="flex justify-between">
+          <Breadcrumb />
+          <Button label="Edit" />
+        </div>
+
         <ProductMainSection />
         <ShowVideo />
         <OfferDetails />

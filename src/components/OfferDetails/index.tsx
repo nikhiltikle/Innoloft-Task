@@ -6,7 +6,7 @@ import StrategyIcon from 'icons/Strategy';
 
 export default function OfferDetails() {
   return (
-    <div className="px-5 py-8 rounded-md gap-5 flex flex-col border border-bright-gray bg-white">
+    <div className="px-5 py-8 rounded-md gap-5 flex flex-col border border-platinum bg-white">
       <p className="text-charcoal text-base font-semibold">Offer details</p>
 
       <div className="grid grid-cols-2 gap-x-10 gap-y-5">

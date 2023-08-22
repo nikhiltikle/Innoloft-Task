@@ -1,0 +1,33 @@
+.ck .ck-toolbar {
+  border-top-left-radius: 6px !important;
+  border-top-right-radius: 6px !important;
+  padding: 5px !important;
+  border-color: #d1d5db !important;
+}
+
+.ck .ck-content {
+  border-bottom-left-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+  border-top: none !important;
+  border-color: #d1d5db !important;
+}
+
+.ck .ck-focused {
+  border-bottom-left-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+  border-top: none !important;
+  box-shadow: none !important;
+  border-color: #d1d5db !important;
+}
+
+.ck .ck-editor__editable {
+  min-height: 200px;
+}
+
+.ck .ck-balloon-panel {
+  border: none !important;
+}
+
+.ck .ck-powered-by {
+  display: none;
+}

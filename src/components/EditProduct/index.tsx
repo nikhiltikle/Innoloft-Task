@@ -5,6 +5,7 @@ import RibbonIcon from 'icons/Ribbon';
 import OfferedBy from 'components/OfferedBy';
 import Input from 'components/Input';
 import { selectProduct, fetchProduct, selectLoading } from 'redux/slices/product';
+import { fetchTrls, selectTrls } from 'redux/slices/trl';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { useEffect } from 'react';
 import SettingIcon from 'icons/Setting';
@@ -19,6 +20,7 @@ export default function EditProfile() {
   const dispatch = useAppDispatch();
   const product = useAppSelector(selectProduct);
   const isLoadingProduct = useAppSelector(selectLoading);
+  const trls = useAppSelector(selectTrls);
 
   const {
     register,
@@ -56,6 +58,7 @@ export default function EditProfile() {
   });
 
   useEffect(() => {
+    dispatch(fetchTrls());
     dispatch(fetchProduct());
     register('description');
   }, []);
@@ -125,17 +128,7 @@ export default function EditProfile() {
                   <p className="text-base text-auro-metal-saurus">TRL</p>
                 </div>
 
-                <Select
-                  options={[
-                    { id: 1, name: 'rtl 9' },
-                    { id: 2, name: 'rtl 8' },
-                    { id: 3, name: 'rtl 7' },
-                    { id: 4, name: 'rtl 6' },
-                    { id: 5, name: 'rtl 5' },
-                  ]}
-                  value={getValues('trl.name')}
-                  onChange={trlValue => setValue('trl.name', trlValue)}
-                />
+                <Select options={trls} value={getValues('trl')} onChange={trlValue => setValue('trl', trlValue)} />
               </div>
             </div>
 

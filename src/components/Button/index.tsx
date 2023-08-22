@@ -2,7 +2,7 @@ import { MouseEvent } from 'react';
 
 interface ButtonProps {
   label: string;
-  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   variant?: 'primary';
 }
 

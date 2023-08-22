@@ -4,20 +4,23 @@ import CostPotIcon from 'icons/CostPot';
 import SettingIcon from 'icons/Setting';
 import StrategyIcon from 'icons/Strategy';
 
-export default function OfferDetails() {
+interface OfferDetailsProps {
+  businessModels: string[];
+  technology: string[];
+  trl: string;
+  cost: string;
+}
+
+export default function OfferDetails({ businessModels, cost, technology, trl }: OfferDetailsProps) {
   return (
     <div className="px-5 py-8 rounded-md gap-5 flex flex-col border border-platinum bg-white">
       <p className="text-charcoal text-base font-semibold">Offer details</p>
 
       <div className="grid grid-cols-2 gap-x-10 gap-y-5">
-        <OfferItem icon={<SettingIcon />} label="Technology" values={['Label 1', 'Label 2', 'Label 3']} />
-        <OfferItem icon={<StrategyIcon />} label="Business Model" values={['Label 1', 'Label 2', 'Label 3']} />
-        <OfferItem
-          icon={<ClockIcon />}
-          label="TRL"
-          values={['TRL 9 – Actual system proven in operational environment']}
-        />
-        <OfferItem icon={<CostPotIcon />} label="Costs" values={['< 1000 €']} />
+        <OfferItem icon={<SettingIcon />} label="Technology" values={technology} />
+        <OfferItem icon={<StrategyIcon />} label="Business Model" values={businessModels} />
+        <OfferItem icon={<ClockIcon />} label="TRL" values={[trl]} />
+        <OfferItem icon={<CostPotIcon />} label="Costs" values={[cost]} />
       </div>
     </div>
   );

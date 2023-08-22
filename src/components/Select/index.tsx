@@ -1,25 +1,36 @@
 import useOutsideClick from 'hooks/useClickOutside';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+interface Option {
+  name: string;
+  id: number;
+}
 
 interface SelectProps {
-  options: { name: string; id: number }[];
-  value?: string;
-  onChange?: (value: string) => void;
+  options: Option[];
+  value?: Option;
+  onChange?: (value: Option) => void;
 }
 
 export default function Select({ options, value, onChange }: SelectProps) {
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(value);
+  const [selectedValue, setSelectedValue] = useState<Option | undefined>(value);
 
   const selectRef = useRef(null);
 
   useOutsideClick(selectRef, () => setOpen(false));
 
-  const handleOptionSelect = (value: string) => {
+  const handleOptionSelect = (value: Option) => {
     setSelectedValue(value);
     onChange && onChange(value);
     setOpen(false);
   };
+
+  useEffect(() => {
+    if (selectedValue !== value) {
+      setSelectedValue(value);
+    }
+  }, [value]);
 
   return (
     <div className="relative w-full" ref={selectRef}>
@@ -32,7 +43,7 @@ export default function Select({ options, value, onChange }: SelectProps) {
         onClick={() => setOpen(true)}
       >
         <span className="flex items-center">
-          <span className="block truncate">{selectedValue}</span>
+          <span className="block truncate">{selectedValue?.name}</span>
         </span>
         <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
           <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -54,7 +65,7 @@ export default function Select({ options, value, onChange }: SelectProps) {
           aria-activedescendant="listbox-option-3"
         >
           {options?.map(option => {
-            const isOptionSelected = selectedValue === option.name;
+            const isOptionSelected = selectedValue?.name === option.name;
 
             return (
               <li
@@ -63,7 +74,7 @@ export default function Select({ options, value, onChange }: SelectProps) {
                   isOptionSelected ? 'bg-chinese-blue text-white' : 'hover:bg-platinum'
                 }`}
                 role="option"
-                onClick={() => handleOptionSelect(option.name)}
+                onClick={() => handleOptionSelect(option)}
               >
                 <div className="flex items-center">
                   <span className={`font-normal block truncate ${isOptionSelected && 'text-white'}`}>

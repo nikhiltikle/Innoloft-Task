@@ -4,7 +4,7 @@ import UserNavbar from 'components/UserNavbar';
 import RibbonIcon from 'icons/Ribbon';
 import OfferedBy from 'components/OfferedBy';
 import Input from 'components/Input';
-import { selectProduct, fetchProduct, selectLoading } from 'redux/slices/product';
+import { selectProduct, fetchProduct, selectLoading, updateProduct } from 'redux/slices/product';
 import { fetchTrls, selectTrls } from 'redux/slices/trl';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { useEffect } from 'react';
@@ -57,6 +57,10 @@ export default function EditProfile() {
     name: 'categories',
   });
 
+  const handleUpdateProduct = (data: Product) => {
+    dispatch(updateProduct(data));
+  };
+
   useEffect(() => {
     dispatch(fetchTrls());
     dispatch(fetchProduct());
@@ -73,7 +77,7 @@ export default function EditProfile() {
     <div className="flex gap-8">
       <UserNavbar />
 
-      <form onSubmit={handleSubmit(data => console.log({ data }))}>
+      <form onSubmit={handleSubmit(handleUpdateProduct)}>
         <div className="flex flex-col gap-5 grow">
           <div className="flex justify-between">
             <label className="text-charcoal text-base font-semibold">Offer Title</label>

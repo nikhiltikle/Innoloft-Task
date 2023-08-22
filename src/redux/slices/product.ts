@@ -73,6 +73,18 @@ export const fetchProduct = createAsyncThunk('product/fetch', async () => {
   return data;
 });
 
+export const updateProduct = createAsyncThunk('product/update', async (productData: Product) => {
+  const response = await fetch(`${API_BASE_URL}/product/6781/`, { method: 'PUT', body: JSON.stringify(productData) });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch product');
+  }
+
+  const data = await response.json();
+
+  return data;
+});
+
 export const productSlice = createSlice({
   name: 'product',
   initialState,
@@ -88,6 +100,18 @@ export const productSlice = createSlice({
         state.product = action.payload;
       })
       .addCase(fetchProduct.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'Something went wrong';
+      })
+      .addCase(updateProduct.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.product = action.payload;
+      })
+      .addCase(updateProduct.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Something went wrong';
       });

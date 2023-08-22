@@ -1,3 +1,4 @@
+import EditProfile from 'components/EditProduct';
 import NavbarWrapper from 'components/NavbarWrapper';
 import ProductView from 'components/ProductView';
 import { createBrowserRouter } from 'react-router-dom';
@@ -17,7 +18,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/product/edit',
-        element: <div>Edit Product page</div>,
+        element: <EditProfile />,
       },
     ],
   },

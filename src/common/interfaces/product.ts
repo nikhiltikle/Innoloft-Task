@@ -16,10 +16,7 @@ export interface Product {
   }[];
   implementationEffortText: string | null;
   investmentEffort: string;
-  trl: {
-    id: number;
-    name: string;
-  };
+  trl: TechnologyReadinessLevel;
   video: string;
   user: User;
   company: Company;
@@ -27,4 +24,10 @@ export interface Product {
     id: number;
     name: string;
   }[];
+}
+
+export interface TechnologyReadinessLevel {
+  id: number;
+  name: string;
+  description?: string | null;
 }

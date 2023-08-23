@@ -4,7 +4,7 @@ interface ButtonProps {
   label: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   variant?: 'primary' | 'secondary' | 'text';
-  type?: 'submit';
+  type?: 'submit' | 'reset' | 'button';
   icon?: React.ReactNode;
 }
 

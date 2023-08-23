@@ -39,7 +39,7 @@ export default function MultiInputField<T extends FieldValues>({
           <div key={`${index}-${field}`} className="flex gap-4 justify-between">
             <Input name={`${name}.${index}.name` as Path<T>} register={register} required error={!!errors?.[index]} />
 
-            <Button label="Remove" variant="secondary" onClick={() => onRemoveField(index)} />
+            <Button label="Remove" type="button" variant="secondary" onClick={() => onRemoveField(index)} />
           </div>
         ))}
       </div>

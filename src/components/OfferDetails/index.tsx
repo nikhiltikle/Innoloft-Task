@@ -13,11 +13,11 @@ interface OfferDetailsProps {
 
 export default function OfferDetails({ businessModels, cost, technology, trl }: OfferDetailsProps) {
   return (
-    <div className="px-5 py-8 rounded-md gap-5 flex flex-col border border-platinum bg-white">
+    <div className="px-5 py-8 rounded-md gap-5 flex flex-col border border-platinum bg-white max-md:px-2.5">
       <p className="text-charcoal text-base font-semibold">Offer details</p>
 
-      <div className="grid grid-cols-2 gap-x-10 gap-y-5">
-        <OfferItem icon={<SettingIcon />} label="Technology" values={technology} />
+      <div className="grid grid-cols-2 gap-x-10 gap-y-5 max-lg:grid-cols-1">
+        <OfferItem icon={<SettingIcon />} label="Categories" values={technology} />
         <OfferItem icon={<StrategyIcon />} label="Business Model" values={businessModels} />
         <OfferItem icon={<ClockIcon />} label="TRL" values={[trl]} />
         <OfferItem icon={<CostPotIcon />} label="Costs" values={[cost]} />

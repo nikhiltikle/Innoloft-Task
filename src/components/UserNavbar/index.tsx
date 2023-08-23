@@ -7,7 +7,7 @@ import ArrowIcon from 'icons/Arrow';
 
 export default function UserNavbar() {
   return (
-    <div className="flex flex-col gap-2.5 min-w-[280px]">
+    <div className="flex flex-col gap-2.5 min-w-[280px] hidden xl:block">
       <div className="flex gap-4 items-center">
         <img className="h-16 w-16 rounded-full" src={profileImage} alt="User 1" />
 

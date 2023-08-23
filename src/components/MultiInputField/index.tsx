@@ -24,7 +24,7 @@ export default function MultiInputField<T extends FieldValues>({
 }: MultiInputFieldProps<T>) {
   return (
     <div className="flex gap-2 text-cadet-grey items-start flex-grow">
-      {icon}
+      <label className="h-6 w-6">{icon}</label>
 
       <div className="flex flex-col gap-2.5 flex-grow">
         <div className="flex gap-2.5 justify-between mb-2.5 items-start flex-grow">

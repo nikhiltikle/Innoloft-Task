@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <div className="h-14 bg-white border-b shadow-sm shadow-chinese-blue border-chinese-blue relative z-50">
-      <div className="container mx-auto h-full">
+      <div className="container mx-auto h-full max-xl:px-4">
         <div className="flex h-full items-center justify-between">
           <Link to="/">
             <img src={InnoloftLogo} alt="Innoloft" height={'26px'} width={'140px'} />

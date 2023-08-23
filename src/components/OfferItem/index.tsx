@@ -9,8 +9,8 @@ interface OfferItemProps {
 
 export default function OfferItem({ icon, label, values }: OfferItemProps) {
   return (
-    <div className="flex gap-2 text-cadet-grey items-start grow">
-      {icon}
+    <div className="flex gap-2 text-cadet-grey items-start flex-grow">
+      <label className="h-6 w-6">{icon}</label>
 
       <div className="flex flex-col gap-2.5 ">
         <p className="text-base text-auro-metal-saurus">{label}</p>

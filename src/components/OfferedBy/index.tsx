@@ -12,7 +12,7 @@ export default function OfferedBy({ user, address, companyName }: OfferedByProps
   const formedAddress = `${address.street} ${address.house}, ${address.zipCode} ${address.city.name}, ${address.country.name}`;
 
   return (
-    <div className="p-5 flex flex-col gap-2.5 flex-grow">
+    <div className="p-5 flex flex-col gap-2.5 flex-grow max-md:px-2.5 ">
       <p className="text-charcoal font-semibold text-base">Offered By</p>
       <img src={InnoloftLogo} alt="Innoloft" width="200px" className="mt-5" />
 

@@ -20,8 +20,8 @@ export default function ProductMainSection({
   companyName,
 }: ProductMainSectionProps) {
   return (
-    <div className="rounded-md gap-5 flex border border-platinum bg-white">
-      <div className="relative rounded-tl-md rounded-bl-md flex flex-col w-[61%]">
+    <div className="rounded-md gap-5 flex border border-platinum bg-white max-lg:flex-col">
+      <div className="relative rounded-tl-md rounded-bl-md flex flex-col w-[61%] max-lg:w-full">
         <div className="absolute top-0 start-0 rounded-tl-md rounded-br-md bg-white h-10 flex items-center gap-2.5">
           <div className="rounded-tl-md rounded-br-md bg-chinese-blue text-white flex justify-center items-center h-full w-10">
             <RibbonIcon />
@@ -30,9 +30,9 @@ export default function ProductMainSection({
           <div className="mr-2.5 text-base font-semibold text-charcoal">Patent</div>
         </div>
 
-        <img src={image} alt={title} className="w-full rounded-tl-md max-h-[300px]" />
+        <img src={image} alt={title} className="w-full rounded-tl-md max-h-[300px] max-md:h-[180px]" />
 
-        <div className="p-5">
+        <div className="p-5 max-md:px-2.5">
           <p className="text-charcoal font-semibold text-base">{title}</p>
           <div className="text-auro-metal-saurus text-sm mt-2.5" dangerouslySetInnerHTML={{ __html: description }} />
         </div>

@@ -23,7 +23,7 @@ export default function ProductView() {
       <UserNavbar />
 
       <div className="flex flex-col gap-5 grow">
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-wrap gap-5">
           <Breadcrumb title={product.name} />
           <Button label="Edit" onClick={() => navigate('/product/edit')} />
         </div>

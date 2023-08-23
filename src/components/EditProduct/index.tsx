@@ -89,7 +89,7 @@ export default function EditProfile() {
   );
 
   return (
-    <div className="flex gap-8">
+    <div className="flex gap-8 ">
       <UserNavbar />
 
       <form onSubmit={handleSubmit(handleUpdateProduct)} className="w-full">
@@ -100,8 +100,8 @@ export default function EditProfile() {
             <Button label="View Offer" />
           </div>
 
-          <div className="rounded-md flex border border-platinum bg-white">
-            <div className="relative rounded-tl-md rounded-bl-md flex flex-col w-[61%]">
+          <div className="rounded-md flex border border-platinum bg-white max-lg:flex-col">
+            <div className="relative rounded-tl-md rounded-bl-md flex flex-col w-[61%] max-lg:w-full">
               <div className="absolute top-0 start-0 rounded-tl-md rounded-br-md bg-white h-10 flex items-center gap-2.5">
                 <div className="rounded-tl-md rounded-br-md bg-chinese-blue text-white flex justify-center items-center h-full w-10">
                   <RibbonIcon />
@@ -110,9 +110,13 @@ export default function EditProfile() {
                 <div className="mr-2.5 text-base font-semibold text-charcoal">Patent</div>
               </div>
 
-              <img src={product.picture} alt="Product 1" className="w-full rounded-tl-md max-h-[300px]" />
+              <img
+                src={product.picture}
+                alt="Product 1"
+                className="w-full rounded-tl-md max-h-[300px] max-md:h-[180px]"
+              />
 
-              <div className="p-5 flex flex-col gap-2.5">
+              <div className="p-5 flex flex-col gap-2.5 max-md:px-2.5">
                 <Input placeholder="Product Name" name="name" register={register} />
 
                 <CkEditor data={getValues('description')} onChange={data => setValue('description', data)} />
@@ -126,7 +130,7 @@ export default function EditProfile() {
             </div>
           </div>
 
-          <div className="p-5 rounded-md gap-5 flex flex-col border border-platinum bg-white">
+          <div className="p-5 rounded-md gap-5 flex flex-col border border-platinum bg-white max-md:px-2.5">
             <p className="text-charcoal text-base font-semibold">Video</p>
 
             <div className="w-full">
@@ -136,16 +140,14 @@ export default function EditProfile() {
             {renderActionButtons}
           </div>
 
-          <div className="p-5 rounded-md gap-5 flex flex-col border border-platinum bg-white">
+          <div className="p-5 rounded-md gap-5 flex flex-col border border-platinum bg-white max-md:px-2.5">
             <p className="text-charcoal text-base font-semibold">Offer details</p>
 
             <div className="flex gap-2 text-cadet-grey items-start flex-grow mb-5">
               <ClockIcon />
 
-              <div className="flex flex-col gap-2.5 w-full">
-                <div className="flex gap-2.5 justify-between w-full">
-                  <p className="text-base text-auro-metal-saurus">TRL</p>
-                </div>
+              <div className="flex flex-col gap-2.5 w-[100%] max-md:w-[90%]">
+                <p className="text-base text-auro-metal-saurus">TRL</p>
 
                 <Select options={trls} value={getValues('trl')} onChange={trlValue => setValue('trl', trlValue)} />
               </div>

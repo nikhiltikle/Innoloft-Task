@@ -16,10 +16,10 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
         <label className="text-auro-metal-saurus text-sm">Offers</label>
       </div>
 
-      <div className="flex gap-1 items-center text-cadet-grey">
+      <div className="flex gap-1 items-center text-cadet-grey truncate">
         <BreadcrumbRightIcon />
 
-        <label className="text-auro-metal-saurus text-sm font-semibold">{title}</label>
+        <label className="text-auro-metal-saurus text-sm font-semibold truncate w-full">{title}</label>
       </div>
     </div>
   );

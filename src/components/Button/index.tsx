@@ -3,14 +3,15 @@ import { MouseEvent } from 'react';
 interface ButtonProps {
   label: string | React.ReactNode;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'text';
   type?: 'submit';
 }
 
 export default function Button({ label, onClick, type, variant = 'primary', ...props }: ButtonProps) {
   const className = {
-    primary: 'bg-chinese-blue border border-chinese-blue text-white text-sm text-regular',
-    secondary: 'bg-platinum border border-ghost-white text-sm text-regular text-chinese-blue',
+    primary: 'bg-chinese-blue border border-chinese-blue text-white text-sm text-normal',
+    secondary: 'bg-platinum border border-ghost-white text-sm text-normal text-chinese-blue',
+    text: 'bg-transparent text-sm text-normal text-auro-metal-saurus',
   };
 
   return (

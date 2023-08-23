@@ -1,7 +1,7 @@
 import { Product } from 'common/interfaces/product';
 import Button from 'components/Button';
 import Input from 'components/Input';
-import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
+import { FieldValues, Path, UseFormRegister, FieldError, Merge, FieldErrorsImpl } from 'react-hook-form';
 
 interface MultiInputFieldProps<T extends FieldValues> {
   fields: { id: number; name: string }[];
@@ -11,6 +11,7 @@ interface MultiInputFieldProps<T extends FieldValues> {
   register: UseFormRegister<T>;
   label: string;
   icon: React.ReactNode;
+  errors?: Merge<FieldError, Merge<FieldError, FieldErrorsImpl<{ id: number; name: string }[]>>>;
 }
 
 export default function MultiInputField<T extends FieldValues>({
@@ -18,6 +19,7 @@ export default function MultiInputField<T extends FieldValues>({
   label,
   icon,
   fields,
+  errors,
   onAddField,
   onRemoveField,
   register,
@@ -35,7 +37,7 @@ export default function MultiInputField<T extends FieldValues>({
 
         {fields.map((field, index) => (
           <div key={`${index}-${field}`} className="flex gap-4 justify-between">
-            <Input name={`${name}.${index}.name` as Path<T>} register={register} required />
+            <Input name={`${name}.${index}.name` as Path<T>} register={register} required error={!!errors?.[index]} />
 
             <Button label="Remove" variant="secondary" onClick={() => onRemoveField(index)} />
           </div>

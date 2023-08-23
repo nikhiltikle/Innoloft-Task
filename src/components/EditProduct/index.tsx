@@ -11,7 +11,7 @@ import { useCallback, useEffect, useMemo } from 'react';
 import SettingIcon from 'icons/Setting';
 import StrategyIcon from 'icons/Strategy';
 import ClockIcon from 'icons/Clock';
-import { useFieldArray, useForm } from 'react-hook-form';
+import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { Product } from 'common/interfaces/product';
 import MultiInputField from 'components/MultiInputField';
 import Select from 'components/Select';
@@ -29,7 +29,7 @@ export default function EditProfile() {
     reset,
     setValue,
     control,
-    // formState: { errors, isLoading },
+    formState: { errors },
     getValues,
   } = useForm<Product>({
     defaultValues: {
@@ -69,7 +69,6 @@ export default function EditProfile() {
   useEffect(() => {
     dispatch(fetchTrls());
     dispatch(fetchProduct());
-    register('description');
   }, []);
 
   useEffect(() => {
@@ -117,9 +116,16 @@ export default function EditProfile() {
               />
 
               <div className="p-5 flex flex-col gap-2.5 max-md:px-2.5">
-                <Input placeholder="Product Name" name="name" register={register} />
+                <Input placeholder="Product Name" name="name" register={register} error={!!errors.name} required />
 
-                <CkEditor data={getValues('description')} onChange={data => setValue('description', data)} />
+                <Controller
+                  control={control}
+                  name="description"
+                  rules={{ required: true }}
+                  render={({ field: { onChange, value }, fieldState: { invalid } }) => (
+                    <CkEditor data={value} onChange={data => onChange(data)} error={invalid} />
+                  )}
+                />
 
                 {renderActionButtons}
               </div>
@@ -134,7 +140,13 @@ export default function EditProfile() {
             <p className="text-charcoal text-base font-semibold">Video</p>
 
             <div className="w-full">
-              <Input placeholder="Add a youtube or vimeo link" register={register} name="video" />
+              <Input
+                placeholder="Add a youtube or vimeo link"
+                register={register}
+                name="video"
+                required
+                error={!!errors.video}
+              />
             </div>
 
             {renderActionButtons}
@@ -162,6 +174,7 @@ export default function EditProfile() {
                 register={register}
                 onAddField={() => appendCategoryField({ id: businessModelsFields.length + 1, name: '' })}
                 onRemoveField={index => removeCategoryField(index)}
+                errors={errors.categories}
               />
 
               <MultiInputField
@@ -172,6 +185,7 @@ export default function EditProfile() {
                 register={register}
                 onAddField={() => appendBusinessModelField({ id: businessModelsFields.length + 1, name: '' })}
                 onRemoveField={index => removeBusinessModelField(index)}
+                errors={errors.businessModels}
               />
 
               {renderActionButtons}

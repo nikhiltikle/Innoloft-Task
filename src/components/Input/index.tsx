@@ -10,13 +10,13 @@ interface InputProps<T extends FieldValues> {
 
 export default function Input<T extends FieldValues>({ name, placeholder, register, required, error }: InputProps<T>) {
   return (
-    <>
+    <div className="flex flex-col gap-1.5">
       <input
         placeholder={placeholder}
         className="rounded-md border-light-silver border px-2.5 py-1 text-charcoal text-base font-semibold placeholder:text-auro-metal-saurus placeholder:text-sm placeholder:font-normal w-full outline-0"
         {...register(name, { required })}
       />
-      {error && <span>Required field</span>}
-    </>
+      {error && <span className="text-xs text-red-500">* Required field</span>}
+    </div>
   );
 }

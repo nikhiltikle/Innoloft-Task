@@ -15,6 +15,7 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { Product } from 'common/interfaces/product';
 import MultiInputField from 'components/MultiInputField';
 import Select from 'components/Select';
+import RightTickIcon from 'icons/RightTick';
 
 export default function EditProfile() {
   const dispatch = useAppDispatch();
@@ -81,7 +82,7 @@ export default function EditProfile() {
     () => (
       <div className="flex justify-end gap-2.5 mt-1.5">
         <Button label="Cancel" variant="text" onClick={resetProductForm} />
-        <Button label="Save" type="submit" />
+        <Button label="Save" type="submit" icon={<RightTickIcon />} />
       </div>
     ),
     [resetProductForm],

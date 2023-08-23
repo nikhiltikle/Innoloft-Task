@@ -7,7 +7,7 @@ import Input from 'components/Input';
 import { selectProduct, fetchProduct, selectLoading, updateProduct } from 'redux/slices/product';
 import { fetchTrls, selectTrls } from 'redux/slices/trl';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import SettingIcon from 'icons/Setting';
 import StrategyIcon from 'icons/Strategy';
 import ClockIcon from 'icons/Clock';
@@ -61,6 +61,10 @@ export default function EditProfile() {
     dispatch(updateProduct(data));
   };
 
+  const resetProductForm = useCallback(() => {
+    reset(product);
+  }, [reset, product]);
+
   useEffect(() => {
     dispatch(fetchTrls());
     dispatch(fetchProduct());
@@ -69,16 +73,26 @@ export default function EditProfile() {
 
   useEffect(() => {
     if (!isLoadingProduct) {
-      reset(product);
+      resetProductForm();
     }
   }, [isLoadingProduct]);
+
+  const renderActionButtons = useMemo(
+    () => (
+      <div className="flex justify-end gap-2.5 mt-1.5">
+        <Button label="Cancel" variant="text" onClick={resetProductForm} />
+        <Button label="Save" type="submit" />
+      </div>
+    ),
+    [resetProductForm],
+  );
 
   return (
     <div className="flex gap-8">
       <UserNavbar />
 
-      <form onSubmit={handleSubmit(handleUpdateProduct)}>
-        <div className="flex flex-col gap-5 grow">
+      <form onSubmit={handleSubmit(handleUpdateProduct)} className="w-full">
+        <div className="flex flex-col gap-5 flex-grow">
           <div className="flex justify-between">
             <label className="text-charcoal text-base font-semibold">Offer Title</label>
 
@@ -102,9 +116,7 @@ export default function EditProfile() {
 
                 <CkEditor data={getValues('description')} onChange={data => setValue('description', data)} />
 
-                <div>
-                  <Button label="Save" type="submit" />
-                </div>
+                {renderActionButtons}
               </div>
             </div>
 
@@ -119,6 +131,8 @@ export default function EditProfile() {
             <div className="w-full">
               <Input placeholder="Add a youtube or vimeo link" register={register} name="video" />
             </div>
+
+            {renderActionButtons}
           </div>
 
           <div className="p-5 rounded-md gap-5 flex flex-col border border-platinum bg-white">
@@ -156,6 +170,8 @@ export default function EditProfile() {
                 onAddField={() => appendBusinessModelField({ id: businessModelsFields.length + 1, name: '' })}
                 onRemoveField={index => removeBusinessModelField(index)}
               />
+
+              {renderActionButtons}
             </div>
           </div>
         </div>

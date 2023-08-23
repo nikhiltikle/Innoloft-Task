@@ -1,6 +1,8 @@
 import { Address, User } from 'common/interfaces/user';
 import OfferedBy from 'components/OfferedBy';
 import RibbonIcon from 'icons/Ribbon';
+import { useAppSelector } from 'redux/hooks';
+import { selectThemeConfig } from 'redux/slices/themeConfig';
 
 interface ProductMainSectionProps {
   image: string;
@@ -19,9 +21,15 @@ export default function ProductMainSection({
   user,
   companyName,
 }: ProductMainSectionProps) {
+  const themeConfig = useAppSelector(selectThemeConfig);
+
   return (
-    <div className="rounded-md gap-5 flex border border-platinum bg-white max-lg:flex-col">
-      <div className="relative rounded-tl-md rounded-bl-md flex flex-col w-[61%] max-lg:w-full">
+    <div className="rounded-md flex border border-platinum bg-white max-lg:flex-col">
+      <div
+        className={`relative rounded-tl-md rounded-bl-md flex flex-col max-lg:w-full ${
+          themeConfig.hasUserSection ? ' w-[61%]' : 'w-full'
+        }`}
+      >
         <div className="absolute top-0 start-0 rounded-tl-md rounded-br-md bg-white h-10 flex items-center gap-2.5">
           <div className="rounded-tl-md rounded-br-md bg-chinese-blue text-white flex justify-center items-center h-full w-10">
             <RibbonIcon />

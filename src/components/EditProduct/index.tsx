@@ -16,12 +16,14 @@ import { Product } from 'common/interfaces/product';
 import MultiInputField from 'components/MultiInputField';
 import Select from 'components/Select';
 import RightTickIcon from 'icons/RightTick';
+import { selectThemeConfig } from 'redux/slices/themeConfig';
 
 export default function EditProfile() {
   const dispatch = useAppDispatch();
   const product = useAppSelector(selectProduct);
   const isLoadingProduct = useAppSelector(selectLoading);
   const trls = useAppSelector(selectTrls);
+  const themeConfig = useAppSelector(selectThemeConfig);
 
   const {
     register,
@@ -100,7 +102,11 @@ export default function EditProfile() {
           </div>
 
           <div className="rounded-md flex border border-platinum bg-white max-lg:flex-col">
-            <div className="relative rounded-tl-md rounded-bl-md flex flex-col w-[61%] max-lg:w-full">
+            <div
+              className={`relative rounded-tl-md rounded-bl-md flex flex-col max-lg:w-full ${
+                themeConfig.hasUserSection ? ' w-[61%]' : 'w-full'
+              }`}
+            >
               <div className="absolute top-0 start-0 rounded-tl-md rounded-br-md bg-white h-10 flex items-center gap-2.5">
                 <div className="rounded-tl-md rounded-br-md bg-chinese-blue text-white flex justify-center items-center h-full w-10">
                   <RibbonIcon />
@@ -131,9 +137,7 @@ export default function EditProfile() {
               </div>
             </div>
 
-            <div className="border-l border-platinum flex flex-grow">
-              {<OfferedBy address={product.company.address} user={product.user} companyName={product.company.name} />}
-            </div>
+            <OfferedBy address={product.company.address} user={product.user} companyName={product.company.name} />
           </div>
 
           <div className="p-5 rounded-md gap-5 flex flex-col border border-platinum bg-white max-md:px-2.5">

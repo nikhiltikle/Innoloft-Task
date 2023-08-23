@@ -1,7 +1,16 @@
 import Header from 'components/Header';
+import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import { fetchThemeConfig } from 'redux/slices/themeConfig';
+import { useAppDispatch } from 'redux/hooks';
 
 export default function NavbarWrapper() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchThemeConfig());
+  }, []);
+
   return (
     <>
       <Header />

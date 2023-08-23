@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# Innoloft Frontend Task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application provides a dashboard for displaying and editing product information, along with a white-labeling feature.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+1. `React.Js`
+2. `Typescript`
+3. `Redux toolkit`
+4. `Tailwind CSS`
+5. `React-hook-form`
+6. `Eslint`
+7. `Prettier`
 
-### `npm start`
+## Requirement to run an application on local
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Ensure that you have Node Package Manager (NPM) installed on your machine.
+2. Create a `.env` file in the root directory of the application.
+3. Copy the contents from the `.env.example` file and paste them into the `.env` file.
+4. Assign the App ID to the `REACT_APP_APP_ID` environment variable in the `.env` file.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Steps to start an application on local
 
-### `npm test`
+1. Navigate to the root directory of the application.
+2. Run `npm install`.
+3. Run `npm start`. This will launch the application on a local server. You can access it by opening [http://localhost:3000/](http://localhost:3000/) in your browser.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features we added
 
-### `npm run build`
+1. Dashboard Page
+2. Product View Page (All sections as specified in the requirements)
+3. Product Edit Page (All sections as specified in the requirements)
+4. White-labeling
+5. API integration with redux toolkit and thunk
+6. Responsive Design for Mobile and Laptop Screens
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Limitations
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. The application cannot display the mainColor from the configuration in the header, as the header uses this [logo](https://img.innoloft.com/logo.svg) which is not directly related to the main color. Therefore, we have only implemented showing and hiding the user info based on the `hasUserSection` value.
